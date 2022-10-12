@@ -14,7 +14,7 @@ const User = ({ userId }) => {
     if (user) {
         const handleEdit = () => navigate(`/dash/users/${userId}`)
 
-        const userRolesString = user.roles.tostring().replaceAll(',', ',')
+        const userRolesString = user.roles.toString().replaceAll(',', ',')
 
         const cellStatus = user.active ? '' : 'table__cell- -inactive'
 
