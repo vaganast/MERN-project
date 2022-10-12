@@ -1,5 +1,5 @@
-import { useGetNotesQuery } from "./notesApiSlice"
-import Note from "./Note"
+import { useGetNotesQuery } from './notesApiSlice'
+import Note from './Note'
 
 const NotesList = () => {
     const {
@@ -8,7 +8,11 @@ const NotesList = () => {
         isSuccess,
         isError,
         error
-    } = useGetNotesQuery()
+    } = useGetNotesQuery(undefined, {
+        pollingInterval: 15000, //if u have more than 1 people working on same refreshing /15sec
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+      })
 
     let content
 
