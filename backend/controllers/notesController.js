@@ -6,7 +6,9 @@ const asyncHandler = require('express-async-handler')
 // @route GET /notes
 // @access private
 const getAllNotes = asyncHandler(async (req, res) => {
+    //get notes from mongoDB
     const notes = await Note.find().lean()
+
     //if no notes
     if(!notes?.length) {
         return res.status(400).json({ message: 'No notes found'})
@@ -14,7 +16,6 @@ const getAllNotes = asyncHandler(async (req, res) => {
 
     // Add username to each note before sending the response 
     // Promise.all with map() link: https://youtu.be/4lqJBBEpjRE 
-
     const notesWithUser = await Promise.all(notes.map(async (note) => {
         const user = await User.findById(note.user).lean().exec()
         return { ...note, username: user.username }
