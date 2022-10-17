@@ -1,4 +1,3 @@
-import { build } from '@reduxjs/toolkit/dist/query/core/buildMiddleware/cacheLifecycle'
 import { apiSlice } from '../../app/api/apiSlice'
 import { logOut } from './authSlice'
 
@@ -36,3 +35,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }),
     })
 })
+
+export const { 
+    useLoginMutation,
+    useSendLogoutMutation,
+    useRefreshMutation,
+} = authApiSlice
