@@ -17,11 +17,13 @@ export const authApiSlice = apiSlice.injectEndpoints({
             }),
             async onQueryStarted(arg, { dispatch, queryFulfilled }){
                 try {
-                    //const { data } =
-                    await queryFulfilled
-                    //console.log(data)
+                    const { data } = await queryFulfilled
+                    console.log(data)
                     dispatch(logOut())
-                    dispatch(apiSlice.util.resetApiState())
+                    //fix a bug keep sending fetch req after log out
+                    setTimeout(() => {
+                        dispatch(apiSlice.util.resetApiState())
+                    })
                 } catch (err) {
                     console.log(err)
                 }

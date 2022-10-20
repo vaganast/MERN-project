@@ -80,7 +80,7 @@ const refresh = (req, res) => {
                     }
                 },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: '1m' }
+                { expiresIn: '20s' }
             )
 
             res.json({ accessToken })
