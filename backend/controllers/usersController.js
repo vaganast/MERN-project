@@ -25,8 +25,8 @@ const createNewUser = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'All fields are required'})
     }
 
-    //Check for duplicates
-    const duplicate = await User.findOne({ username }).lean().exec()
+    //Check for duplicates collation locale is for lower/upper case letter example dave Dave is duplicate
+    const duplicate = await User.findOne({ username }).collation({ locale: 'en', strength: 2}).lean().exec()
 
     if (duplicate) {
         return res.status(409).json({ message: 'Duplicate username'})
@@ -64,8 +64,8 @@ const updateUser = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'User not found'})
     }
 
-    //Check for duplicate
-    const duplicate = await User.findOne({ username }).lean().exec()
+    //Check for duplicate locale is for lower/upper case letter example dave Dave is duplicate
+    const duplicate = await User.findOne({ username }).collation({ locale: 'en', strength: 2}).lean().exec()
     //Allow updates to the original user
     if ( duplicate && duplicate?._id.toString() !== id) {
         return res.status(409).json({ message: 'Duplicate username'})
