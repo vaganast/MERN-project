@@ -5,7 +5,9 @@ const allowedOrigins = [
    'https://mern-project-omega.vercel.app',
    'https://mern-project-git-main-vaganast.vercel.app',
    'https://mern-project-vaganast.vercel.app',
-   'https://mern-frontend.onrender.com'
+   'https://mern-frontend.onrender.com',
+   'https://mern-project-vaganast.vercel.app/',
+   'https://mern-project-vaganast.vercel.app'
 ]
 
 module.exports = allowedOrigins
