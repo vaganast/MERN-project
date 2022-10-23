@@ -1,11 +1,11 @@
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-
 import { useDispatch } from 'react-redux'
 import { setCredentials } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
-
 import usePersist from '../../hooks/usePersist'
+import PulseLoader from 'react-spinners/PulseLoader'
+
 
 const Login = () => {
   const userRef = useRef()
@@ -57,7 +57,7 @@ const Login = () => {
   //err class
   const errClass = errMsg ? 'errmsg' : 'offscreen'
 
-  if (isLoading) return <p>Loading . . </p> // can use spiner
+  if (isLoading) return <PulseLoader color={'#FFF'} />
 
   //public page own header &footer 
   const content = (
