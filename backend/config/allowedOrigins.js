@@ -4,7 +4,8 @@ const allowedOrigins = [
    'https://mern-project-105rn74iz-vaganast.vercel.app/',
    'https://mern-project-omega.vercel.app/',
    'https://mern-project-git-main-vaganast.vercel.app/',
-   'https://mern-project-vaganast.vercel.app/'
+   'https://mern-project-vaganast.vercel.app/',
+   'https://mern-frontend.onrender.com'
 ]
 
 module.exports = allowedOrigins
